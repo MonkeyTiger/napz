@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import { Transition } from 'react-router-simple-transition';
+import Home from './views/Home';
+import IDOs from './views/IDOs';
+import Token from './views/Token';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Transition>
+            <Home />
+          </Transition>
+        </Route>
+        <Route exact path="/idos">
+          <Transition>
+            <IDOs />
+          </Transition>
+        </Route>
+        <Route exact path="/token">
+          <Transition>
+            <Token />
+          </Transition>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
