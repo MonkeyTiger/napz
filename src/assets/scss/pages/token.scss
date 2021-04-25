@@ -5,6 +5,7 @@
   .bg-image {
     position: fixed;
     bottom: 0;
+    z-index: 1;
 
     img {
       opacity: 0.6;
@@ -68,6 +69,8 @@
   & > .content {
     width: 100%;
     padding: 0 40px;
+    position: relative;
+    z-index: 10;
 
     & > .header {
       width: 100%;

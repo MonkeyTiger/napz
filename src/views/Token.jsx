@@ -25,6 +25,7 @@ import TokenItem from '../components/TokenItem';
 
 const Token = () => {
   const [selectedToken, setSelectedToken] = useState(null);
+  const [unit, setUnit] = useState(null);
   const handleSelectToken = (data) => {
     setSelectedToken(data);
   }
@@ -128,6 +129,10 @@ const Token = () => {
     },
   ]);
 
+  const handleChange = (event) => {
+    setUnit(event.target.value);
+  }
+
   return (
     <div className="token">
       <div className="bg-image">
@@ -210,7 +215,7 @@ const Token = () => {
                   <span>Amount</span>
                   <div className="select">
                     <img src={DiamondIcon} className="diamond" alt="diamond" />
-                    <select>
+                    <select onChange={handleChange}>
                       <option>USDT</option>
                       <option>USDC</option>
                       <option>BUSD</option>
@@ -220,7 +225,7 @@ const Token = () => {
                 </div>
                 <div className="inputField">
                   <input type="text" defaultValue={`${selectedToken ? '56,783' : '0.00'}`} />
-                  <span>USDT</span>
+                  <span>{unit || 'USDT'}</span>
                 </div>
                 <div className="converted">
                   <span>${selectedToken ? selectedToken.price : '0.00'}</span>
